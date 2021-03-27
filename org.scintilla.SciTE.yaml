@@ -1,5 +1,5 @@
 app-id: org.scintilla.SciTE
-runtime: org.gnome.Platform
+runtime: org.gnome.Sdk
 runtime-version: '3.38'
 sdk: org.gnome.Sdk
 command: SciTE
@@ -12,6 +12,18 @@ finish-args:
   - --filesystem=host
   
 modules:
+
+- name: urxvt
+  buildsystem: simple
+  build-commands:
+  - sed -i '/if (perl)/,+5d' src/rxvtperl.xs      &&
+     ./configure --prefix=/app --enable-everything --disable-perl &&
+    make &&
+    make install
+  sources:
+  - type: archive
+    url: http://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.22.tar.bz2
+    md5: 93782dec27494eb079467dacf6e48185
 
 - name: SciTE
   buildsystem: simple
