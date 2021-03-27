@@ -13,11 +13,11 @@
     <p>SciTE includes the following features:</p>
     <ul>
       <li>Syntax highlighting</li>
+      <li>Run code in Terminal, C, C++, vala, go</li>
       <li>Code completion</li>
       <li>Code folding</li>
       <li>Many supported filetypes like C, Java, PHP, HTML, Python, Perl, Pascal</li>
       <li>Exporting file to HTML, RTF, PDF, LATEX, XML</li>
-      <li>Run code in Terminal, C, C++, Python </li>
     </ul>
   </description>
   <screenshots>
