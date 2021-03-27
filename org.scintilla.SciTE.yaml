@@ -66,7 +66,11 @@ modules:
          >> ${FLATPAK_DEST}/share/scite/cpp.properties
   - echo 'command.go.*.go=urxvt -e bash -c "./$(FileName);read"'
          >> ${FLATPAK_DEST}/share/scite/cpp.properties
-     
+  - echo 'command.go.needs.*.c=gcc $(ccopts) -std=c99 $(FileNameExt) -o $(FileName)'
+         >> ${FLATPAK_DEST}/share/scite/cpp.properties
+  - echo 'command.go.needs.$(file.patterns.cplusplus)=g++ $(ccopts) $(FileNameExt) -o $(FileName)'
+         >> ${FLATPAK_DEST}/share/scite/cpp.properties
+       
   - ln -sf ${FLATPAK_DEST}/lib/scite/*.so 
            ${FLATPAK_DEST}/lib
   - sed 's/Icon=Sci48M/Icon=org.scintilla.SciTE/g' -i 
