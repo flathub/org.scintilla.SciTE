@@ -13,18 +13,39 @@ finish-args:
   
 modules:
 
-- name: urxvt
-  buildsystem: simple
-  build-commands:
-  - sed -i '/if (perl)/,+5d' src/rxvtperl.xs      &&
-     ./configure --prefix=/app --enable-everything --disable-perl &&
-    make &&
-    make install
+- name: vte
+  buildsystem: meson
   sources:
   - type: archive
-    url: http://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.22.tar.bz2
-    md5: 93782dec27494eb079467dacf6e48185
+    url: ftp://ftp.acc.umu.se/pub/gnome/sources/vte/0.62/vte-0.62.3.tar.xz
+    md5: 234c80d99b7200ac39734f77366da822
+    
+- shared-modules/intltool-0.51.json
 
+- name: libxfce4util
+  sources:
+  - type: archive
+    url: http://archive.xfce.org/src/xfce/libxfce4util/4.16/libxfce4util-4.16.0.tar.bz2
+    md5: 5a2a7b72c0357f410d8e0d4190beeae2
+
+- name: Xfconf
+  sources:
+  - type: archive
+    url: http://archive.xfce.org/src/xfce/xfconf/4.16/xfconf-4.16.0.tar.bz2
+    md5: ac204fcc17fd4299d59e619aadbc6194
+
+- name: libxfce4ui
+  sources:
+  - type: archive
+    url: http://archive.xfce.org/src/xfce/libxfce4ui/4.16/libxfce4ui-4.16.0.tar.bz2
+    md5: 4a7035374f016efa968b776a110065d9
+
+- name: xfce4-terminal
+  sources:
+  - type: archive
+    url: https://archive.xfce.org/src/apps/xfce4-terminal/0.8/xfce4-terminal-0.8.10.tar.bz2
+    sha256: 7a3337c198e01262a0412384823185753ac8a0345be1d6776a7e9bbbcbf33dc7
+    
 - name: SciTE
   buildsystem: simple
   sources:
@@ -53,26 +74,31 @@ modules:
   
   - mkdir -p ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/
   - install -Dm644 org.scintilla.SciTE.png ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/
-  
+
+  # sane defaults for SciTE application  
   - mkdir -p ${FLATPAK_DEST}/share/scite
   - install -Dm644 SciTEGlobal.properties ${FLATPAK_DEST}/share/scite
-      
-  # open terminal window for c,c++,vala, and go, use run command f5 key
-  - echo 'command.go.*.c=urxvt -e bash -c "./$(FileName);read"' 
+
+  # open terminal window for c,c++,vala, and go run command f5 key
+  - echo 'command.go.*.c=xfce4-terminal --initial-title "Running $(FileName)" --hide-menubar --command "bash -c ./$(FileName);read"' 
          >> ${FLATPAK_DEST}/share/scite/cpp.properties
-  - echo 'command.go.$(file.patterns.cplusplus)=urxvt -e bash -c "./$(FileName);read"'
+  - echo 'command.go.$(file.patterns.cplusplus)=xfce4-terminal --initial-title "Running $(FileName)" --hide-menubar --command "bash -c ./$(FileName);read"'
          >> ${FLATPAK_DEST}/share/scite/cpp.properties
-  - echo 'command.go.*.vala=urxvt -e bash -c "./$(FileName);read"'
+  - echo 'command.go.*.vala=xfce4-terminal --initial-title "Running $(FileName)" --hide-menubar --command "bash -c ./$(FileName);read"'
          >> ${FLATPAK_DEST}/share/scite/cpp.properties
-  - echo 'command.go.*.go=urxvt -e bash -c "./$(FileName);read"'
+  - echo 'command.go.*.go=xfce4-terminal --initial-title "Running $(FileName)" --hide-menubar --command "bash -c ./$(FileName);read"'
          >> ${FLATPAK_DEST}/share/scite/cpp.properties
+
   - echo 'command.go.needs.*.c=gcc $(ccopts) -std=c99 $(FileNameExt) -o $(FileName)'
          >> ${FLATPAK_DEST}/share/scite/cpp.properties
   - echo 'command.go.needs.$(file.patterns.cplusplus)=g++ $(ccopts) $(FileNameExt) -o $(FileName)'
          >> ${FLATPAK_DEST}/share/scite/cpp.properties
-       
+     
+  # scite needs scintilla.so at /app/lib   
   - ln -sf ${FLATPAK_DEST}/lib/scite/*.so 
            ${FLATPAK_DEST}/lib
+
+  # Install icons         
   - sed 's/Icon=Sci48M/Icon=org.scintilla.SciTE/g' -i 
     ${FLATPAK_DEST}/share/applications/SciTE.desktop
 
