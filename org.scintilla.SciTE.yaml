@@ -61,6 +61,8 @@ modules:
     path: SciTEGlobal.properties
   - type: archive
     path: toolbar-icons.tar.xz
+  - type: file
+    path: cpp.build.run.properties
     
   build-commands:
   - cd scintilla/gtk && 
@@ -79,17 +81,8 @@ modules:
   - mkdir -p ${FLATPAK_DEST}/share/scite
   - install -Dm644 SciTEGlobal.properties ${FLATPAK_DEST}/share/scite
 
-  # open terminal window for c,c++,vala, and go run command f5 key
-  - echo '
-command.go.*.c=xfce4-terminal --initial-title "Running $(FileName)" --hide-menubar --command "bash -c ./$(FileName);read"
-command.go.$(file.patterns.cplusplus)=xfce4-terminal --initial-title "Running $(FileName)" --hide-menubar --command "bash -c ./$(FileName);read"
-command.go.*.vala=xfce4-terminal --initial-title "Running $(FileName)" --hide-menubar --command "bash -c ./$(FileName);read"
-command.go.*.go=xfce4-terminal --initial-title "Running $(FileName)" --hide-menubar --command "bash -c ./$(FileName);read"
-command.go.needs.*.c=gcc $(ccopts) -std=c99 $(FileNameExt) -o $(FileName)
-command.go.needs.$(file.patterns.cplusplus)=g++ $(ccopts) $(FileNameExt) -o $(FileName)
-command.go.*.vala=xfce4-terminal --initial-title "Running $(FileName)" --hide-menubar --command "bash -c ./$(FileName);read"
-command.go.needs.$(file.patterns.vala)=valac --pkg gtk+-3.0 $(FileNameExt)
-'         >> ${FLATPAK_DEST}/share/scite/cpp.properties
+  # build before running c, c++, vala source
+  - cat cpp.build.run.properties >> ${FLATPAK_DEST}/share/scite/cpp.properties
      
   # scite needs scintilla.so at /app/lib   
   - ln -sf ${FLATPAK_DEST}/lib/scite/*.so 
