@@ -50,9 +50,9 @@ modules:
   buildsystem: simple
   sources:
   - type: archive
-    url: https://www.scintilla.org/scite516.tgz
+    url: https://www.scintilla.org/scite520.tgz
     strip-components: 0
-    sha256: c595bc56ca0bcdeed4e08f32ba7ad2cb9452a6e9c45241723c87dd70486a949f
+    sha256: a63e0f340bf90df8c1ec9abe8d9c5db0a3aee5663c8b325117155456364f52ff
   - type: file
     path: org.scintilla.SciTE.metainfo.xml
   - type: file
@@ -96,6 +96,7 @@ modules:
 
   - mkdir -p ${FLATPAK_DEST}/share/icons/Adwaita/{22x22,24x24}/
              ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
+
   - install -Dm644 *.png ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
   - ln -sf ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
            ${FLATPAK_DEST}/share/icons/Adwaita/22x22/actions
