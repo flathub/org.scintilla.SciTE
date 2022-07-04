@@ -50,9 +50,9 @@ modules:
   buildsystem: simple
   sources:
   - type: archive
-    url: https://www.scintilla.org/scite521.tgz
+    url: https://www.scintilla.org/scite523.tgz
     strip-components: 0
-    sha256: 0e7a1daca03d9eea20b2857b722ffd57788799235803bb7b84694af5a1707e07
+    sha256: e0dbc30cfe5a3c255b5b00b9491796561de68eea36203811acabbcb7127aa6ae
   - type: file
     path: org.scintilla.SciTE.metainfo.xml
   - type: file
