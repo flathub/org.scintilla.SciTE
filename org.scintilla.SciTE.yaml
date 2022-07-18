@@ -18,7 +18,7 @@ modules:
   sources:
   - type: archive
     url: ftp://ftp.acc.umu.se/pub/gnome/sources/vte/0.62/vte-0.62.3.tar.xz
-    md5: 234c80d99b7200ac39734f77366da822
+    sha256: f5770285a52cc23a3c0428a43d492b7c0ba458ce7b8a73768a7d4f1e8a7db3b4
     
 - shared-modules/intltool-0.51.json
 
@@ -26,19 +26,19 @@ modules:
   sources:
   - type: archive
     url: http://archive.xfce.org/src/xfce/libxfce4util/4.16/libxfce4util-4.16.0.tar.bz2
-    md5: 5a2a7b72c0357f410d8e0d4190beeae2
+    sha256: 60598d745d1fc81ff5ad3cecc3a8d1b85990dd22023e7743f55abd87d8b55b83
 
 - name: Xfconf
   sources:
   - type: archive
     url: http://archive.xfce.org/src/xfce/xfconf/4.16/xfconf-4.16.0.tar.bz2
-    md5: ac204fcc17fd4299d59e619aadbc6194
+    sha256: 652a119007c67d9ba6c0bc7a740c923d33f32d03dc76dfc7ba682584e72a5425
 
 - name: libxfce4ui
   sources:
   - type: archive
     url: http://archive.xfce.org/src/xfce/libxfce4ui/4.16/libxfce4ui-4.16.0.tar.bz2
-    md5: 4a7035374f016efa968b776a110065d9
+    sha256: 8b06c9e94f4be88a9d87c47592411b6cbc32073e7af9cbd64c7b2924ec90ceaa
 
 - name: xfce4-terminal
   sources:
@@ -115,7 +115,7 @@ modules:
   sources:
   - type: archive
     url: https://github.com/liberationfonts/liberation-fonts/files/6060976/liberation-fonts-ttf-2.1.3.tar.gz
-    md5: 02503c31b7182fc9adc6ebebe3221478
+    sha256: 22ca2f42ea10e32c715bdb58f170583a80ff49a48d632ae7ec390a1c0f89682f
 
 cleanup:
  - "*.a"
