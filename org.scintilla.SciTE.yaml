@@ -1,7 +1,7 @@
 app-id: org.scintilla.SciTE
-runtime: org.gnome.Sdk
-runtime-version: '3.38'
-sdk: org.gnome.Sdk
+runtime: org.freedesktop.Sdk
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
 command: SciTE
 rename-desktop-file: SciTE.desktop
 
@@ -10,41 +10,18 @@ finish-args:
   - --socket=fallback-x11
   - --device=dri
   - --filesystem=host
-  
 modules:
 
-- name: vte
-  buildsystem: meson
+- name: astyle
+  buildsystem: simple
+  build-commands:
+  - cd build/gcc &&
+    make -j $FLATPAK_BUILDER_N_JOBS &&
+    make prefix=/app install
   sources:
   - type: archive
-    url: ftp://ftp.acc.umu.se/pub/gnome/sources/vte/0.62/vte-0.62.3.tar.xz
-    sha256: f5770285a52cc23a3c0428a43d492b7c0ba458ce7b8a73768a7d4f1e8a7db3b4
-    
-- shared-modules/intltool-0.51.json
-
-- name: libxfce4util
-  sources:
-  - type: archive
-    url: http://archive.xfce.org/src/xfce/libxfce4util/4.16/libxfce4util-4.16.0.tar.bz2
-    sha256: 60598d745d1fc81ff5ad3cecc3a8d1b85990dd22023e7743f55abd87d8b55b83
-
-- name: Xfconf
-  sources:
-  - type: archive
-    url: http://archive.xfce.org/src/xfce/xfconf/4.16/xfconf-4.16.0.tar.bz2
-    sha256: 652a119007c67d9ba6c0bc7a740c923d33f32d03dc76dfc7ba682584e72a5425
-
-- name: libxfce4ui
-  sources:
-  - type: archive
-    url: http://archive.xfce.org/src/xfce/libxfce4ui/4.16/libxfce4ui-4.16.0.tar.bz2
-    sha256: 8b06c9e94f4be88a9d87c47592411b6cbc32073e7af9cbd64c7b2924ec90ceaa
-
-- name: xfce4-terminal
-  sources:
-  - type: archive
-    url: https://archive.xfce.org/src/apps/xfce4-terminal/0.8/xfce4-terminal-0.8.10.tar.bz2
-    sha256: 7a3337c198e01262a0412384823185753ac8a0345be1d6776a7e9bbbcbf33dc7
+    url: https://sourceforge.net/projects/astyle/files/astyle/astyle%203.1/astyle_3.1_linux.tar.gz
+    sha256: cbcc4cf996294534bb56f025d6f199ebfde81aa4c271ccbd5ee1c1a3192745d7
     
 - name: SciTE
   buildsystem: simple
@@ -61,8 +38,6 @@ modules:
     path: SciTEGlobal.properties
   - type: archive
     path: toolbar-icons.tar.xz
-  - type: file
-    path: cpp.build.run.properties
     
   build-commands:
   - cd scintilla/gtk && 
@@ -82,9 +57,6 @@ modules:
   # sane defaults for SciTE application  
   - mkdir -p ${FLATPAK_DEST}/share/scite
   - install -Dm644 SciTEGlobal.properties ${FLATPAK_DEST}/share/scite
-
-  # build before running c, c++, vala source
-  - cat cpp.build.run.properties >> ${FLATPAK_DEST}/share/scite/cpp.properties
      
   # scite needs scintilla.so at /app/lib   
   - ln -sf ${FLATPAK_DEST}/lib/scite/*.so 
