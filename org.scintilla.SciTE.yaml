@@ -36,6 +36,8 @@ modules:
     path: org.scintilla.SciTE.png
   - type: file
     path: SciTEGlobal.properties
+  - type: file
+    path: cpp.build.run.properties
   - type: archive
     path: toolbar-icons.tar.xz
     
@@ -57,6 +59,9 @@ modules:
   # sane defaults for SciTE application  
   - mkdir -p ${FLATPAK_DEST}/share/scite
   - install -Dm644 SciTEGlobal.properties ${FLATPAK_DEST}/share/scite
+ 
+  # build before running c, c++, vala source
+  - cat cpp.build.run.properties >> ${FLATPAK_DEST}/share/scite/cpp.properties
      
   # scite needs scintilla.so at /app/lib   
   - ln -sf ${FLATPAK_DEST}/lib/scite/*.so 
