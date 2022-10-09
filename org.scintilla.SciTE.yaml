@@ -22,7 +22,13 @@ modules:
   - type: archive
     url: https://sourceforge.net/projects/astyle/files/astyle/astyle%203.1/astyle_3.1_linux.tar.gz
     sha256: cbcc4cf996294534bb56f025d6f199ebfde81aa4c271ccbd5ee1c1a3192745d7
-    
+  cleanup:
+  - "*.a"
+  - /lib/debug
+  - /lib32/debug
+  - /lib64/debug
+  - /share/man
+  - /include
 - name: SciTE
   buildsystem: simple
   sources:
@@ -83,7 +89,13 @@ modules:
            ${FLATPAK_DEST}/share/icons/Adwaita/24x24/legacy
   - ln -sf ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
            ${FLATPAK_DEST}/share/icons/Adwaita/24x24/actions
-
+  cleanup:
+  - "*.a"
+  - /lib/debug
+  - /lib32/debug
+  - /lib64/debug
+  - /share/man
+  - /include
 - name: font-liberation-mono
   buildsystem: simple
   build-commands:
@@ -93,11 +105,4 @@ modules:
   - type: archive
     url: https://github.com/liberationfonts/liberation-fonts/files/6060976/liberation-fonts-ttf-2.1.3.tar.gz
     sha256: 22ca2f42ea10e32c715bdb58f170583a80ff49a48d632ae7ec390a1c0f89682f
-
-cleanup:
- - "*.a"
- - /lib/debug
- - /lib32/debug
- - /lib64/debug
- - /share/man
- - /include    
+  
