@@ -20,8 +20,8 @@ modules:
     make prefix=/app install
   sources:
   - type: archive
-    url: https://sourceforge.net/projects/astyle/files/astyle/astyle%203.1/astyle_3.1_linux.tar.gz
-    sha256: cbcc4cf996294534bb56f025d6f199ebfde81aa4c271ccbd5ee1c1a3192745d7
+    url: https://sourceforge.net/projects/astyle/files/astyle/astyle%203.4/astyle-3.4.tar.bz2
+    sha256: 2bac07a46197da962bf3fb8313373242e2190b7739e4203a703eb89b603aaa07
   cleanup:
   - "*.a"
   - /lib/debug
