@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2020 Asif Ali Rizvan -->
-<component>
+<component type="desktop-application">
   <id type="desktop">org.scintilla.SciTE</id>
   <launchable type="desktop-id">org.scintilla.SciTE.desktop</launchable>
   <metadata_license>CC0-1.0</metadata_license>
@@ -20,6 +20,7 @@
       <li>Exporting file to HTML, RTF, PDF, LATEX, XML</li>
     </ul>
   </description>
+  <developer_name>Neil Hodgson</developer_name>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/flathub/org.scintilla.SciTE/master/screenshots/0.png</image>
@@ -37,6 +38,7 @@
   <update_contact>https://github.com/fastrizwaan/SciTE_flatpak</update_contact>
   <translation type="gettext">SciTE</translation>
   <releases>
+    <release date="2024-03-05" version="5.4.2"/>
     <release date="2023-12-27" version="5.4.1"/>
     <release date="2023-11-05" version="5.3.9"/>
     <release date="2023-09-22" version="5.3.8"/>
