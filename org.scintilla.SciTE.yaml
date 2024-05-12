@@ -34,9 +34,9 @@ modules:
   buildsystem: simple
   sources:
   - type: archive
-    url: https://www.scintilla.org/scite542.tgz
+    url: https://www.scintilla.org/scite550.tgz
     strip-components: 0
-    sha256: b5137ae57a46e27cf2332c60f10cf56b4f736a6e18b191a87bd73131d4ffc2c8
+    sha256: f7726a57be521f71c81b4fcc6d171fbf4a62e08c1c1840f5a74e014f3607ee11
   - type: file
     path: org.scintilla.SciTE.metainfo.xml
   - type: file
