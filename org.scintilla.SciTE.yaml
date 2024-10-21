@@ -1,6 +1,6 @@
 app-id: org.scintilla.SciTE
 runtime: org.freedesktop.Sdk
-runtime-version: '23.08'
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 command: SciTE
 rename-desktop-file: SciTE.desktop
@@ -8,6 +8,7 @@ rename-desktop-file: SciTE.desktop
 finish-args:
   - --socket=wayland
   - --socket=fallback-x11
+  - --share=ipc
   - --device=dri
   - --filesystem=host
 modules:
