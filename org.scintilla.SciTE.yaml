@@ -83,14 +83,25 @@ modules:
              ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
 
   - install -Dm644 *.png ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
-  - ln -sf ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
-           ${FLATPAK_DEST}/share/icons/Adwaita/22x22/actions
-  - ln -sf ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
-           ${FLATPAK_DEST}/share/icons/Adwaita/22x22/legacy
-  - ln -sf ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
-           ${FLATPAK_DEST}/share/icons/Adwaita/24x24/legacy
-  - ln -sf ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
-           ${FLATPAK_DEST}/share/icons/Adwaita/24x24/actions
+  - install -Dm644 *.png ${FLATPAK_DEST}/share/icons/hicolor/24x24/actions
+  - install -Dm644 *.png ${FLATPAK_DEST}/share/icons/hicolor/22x22/legacy
+  - install -Dm644 *.png ${FLATPAK_DEST}/share/icons/hicolor/24x24/legacy
+
+  - install -Dm644 *.png ${FLATPAK_DEST}/share/icons/Adwaita/22x22/actions
+  - install -Dm644 *.png ${FLATPAK_DEST}/share/icons/Adwaita/24x24/actions
+  - install -Dm644 *.png ${FLATPAK_DEST}/share/icons/Adwaita/22x22/legacy
+  - install -Dm644 *.png ${FLATPAK_DEST}/share/icons/Adwaita/24x24/legacy
+  
+
+
+#  - ln -sf ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
+#           ${FLATPAK_DEST}/share/icons/Adwaita/22x22/actions
+#  - ln -sf ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
+#           ${FLATPAK_DEST}/share/icons/Adwaita/22x22/legacy
+#  - ln -sf ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
+#           ${FLATPAK_DEST}/share/icons/Adwaita/24x24/legacy
+#  - ln -sf ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
+#           ${FLATPAK_DEST}/share/icons/Adwaita/24x24/actions
   cleanup:
   - "*.a"
   - /lib/debug
