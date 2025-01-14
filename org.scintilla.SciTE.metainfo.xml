@@ -38,6 +38,7 @@
   <update_contact>https://github.com/fastrizwaan/SciTE_flatpak</update_contact>
   <translation type="gettext">SciTE</translation>
   <releases>
+    <release date="2024-12-18" version="5.5.4"/>
     <release date="2024-10-19" version="5.5.3"/>
     <release date="2024-04-23" version="5.5.0"/>
     <release date="2024-03-05" version="5.4.2"/>
