@@ -14,11 +14,9 @@ finish-args:
 modules:
 
 - name: astyle
-  buildsystem: simple
+  buildsystem: cmake-ninja
   build-commands:
-  - cd build/gcc &&
-    make -j $FLATPAK_BUILDER_N_JOBS &&
-    make prefix=/app install
+
   sources:
   - type: archive
     url: https://sourceforge.net/projects/astyle/files/astyle/astyle%203.6/astyle-3.6.9.tar.bz2
