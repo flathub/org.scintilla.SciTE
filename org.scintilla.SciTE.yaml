@@ -15,17 +15,12 @@ modules:
 
 - name: astyle
   buildsystem: cmake-ninja
-  build-commands:
-
   sources:
   - type: archive
-    url: https://sourceforge.net/projects/astyle/files/astyle/astyle%203.6/astyle-3.6.9.tar.bz2
-    sha256: b644597654df5b40087be4a46723c65040f7ce59f3369f1b8f690f9c10cababc
+    url: https://sourceforge.net/projects/astyle/files/astyle/astyle%203.6/astyle-3.6.13.tar.bz2
+    sha256: 048b74b14c6e01f7fae8e63b767da33303ab39d9022afe33055ce4b9e56f162d
   cleanup:
   - "*.a"
-  - /lib/debug
-  - /lib32/debug
-  - /lib64/debug
   - /share/man
   - /include
 
@@ -90,12 +85,10 @@ modules:
   - ln -sf ${FLATPAK_DEST}/share/icons/hicolor/22x22/actions
            ${FLATPAK_DEST}/share/icons/Adwaita/24x24/actions
   cleanup:
-  - "*.a"
-  - /lib/debug
-  - /lib32/debug
-  - /lib64/debug
-  - /share/man
-  - /include
+    - "*.a"
+    - /share/man
+    - /include
+
 
 - name: font-liberation-mono
   buildsystem: simple
