@@ -1,6 +1,6 @@
 app-id: org.scintilla.SciTE
 runtime: org.freedesktop.Sdk
-runtime-version: '24.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: SciTE
 rename-desktop-file: SciTE.desktop
@@ -29,9 +29,9 @@ modules:
   buildsystem: simple
   sources:
   - type: archive
-    url: https://www.scintilla.org/scite558.tgz  
+    url: https://www.scintilla.org/scite562.tgz  
     strip-components: 0
-    sha256: abd5eec4f97de9d746bca0f719b89ccb84a1c7ee5bd37fecc4b8c913b6968d21
+    sha256: f46a77b0d4972dc51c857bab3fe55a8e47cae481737359f93aef98ccca56de1d
   - type: file
     path: org.scintilla.SciTE.metainfo.xml
   - type: file
