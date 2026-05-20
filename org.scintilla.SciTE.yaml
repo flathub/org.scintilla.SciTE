@@ -87,8 +87,8 @@ modules:
            ${FLATPAK_DEST}/share/icons/Adwaita/24x24/actions
 
   # Reuse liberation font files from runtime (saves 4MB)
-  - rm "${FLATPAK_DEST}/lib/calibre/resources/fonts/liberation"/*.ttf
-  - ln -s /usr/share/fonts/liberation-fonts/*.ttf "${FLATPAK_DEST}/lib/calibre/resources/fonts/liberation/"    
+  - mkdir -p /app/share/fonts/
+  - ln -s /usr/share/fonts/liberation-fonts/LiberationMono*.ttf /app/share/fonts/    
   
   cleanup:
     - "*.a"
